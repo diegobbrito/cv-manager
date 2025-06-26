@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github/diegobbrito/cv-manager/graph"
+	"github/diegobbrito/cv-manager/generated"
+	"github/diegobbrito/cv-manager/resolvers"
 	"log"
 	"net/http"
 	"os"
@@ -22,7 +23,7 @@ func main() {
 		port = defaultPort
 	}
 
-	srv := handler.New(graph.NewExecutableSchema(graph.Config{Resolvers: &graph.Resolver{}}))
+	srv := handler.New(generated.NewExecutableSchema(generated.Config{Resolvers: &resolvers.Resolver{}}))
 
 	srv.AddTransport(transport.Options{})
 	srv.AddTransport(transport.GET{})
