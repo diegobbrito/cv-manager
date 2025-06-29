@@ -1,11 +1,11 @@
 package main
 
 import (
+	"github/diegobbrito/cv-manager/config"
 	"github/diegobbrito/cv-manager/generated"
 	"github/diegobbrito/cv-manager/resolvers"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
@@ -16,7 +16,9 @@ import (
 const defaultPort = "8080"
 
 func main() {
-	port := os.Getenv("PORT")
+	env := config.GetEnv()
+	port := env.Port
+
 	if port == "" {
 		port = defaultPort
 	}
