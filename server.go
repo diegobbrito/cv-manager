@@ -13,14 +13,12 @@ import (
 	"github.com/go-chi/cors"
 )
 
-const defaultPort = "8080"
-
 func main() {
 	env := config.GetEnv()
 	port := env.Port
 
 	if port == "" {
-		port = defaultPort
+		port = config.DEFAULT_PORT
 	}
 
 	router := chi.NewRouter()
